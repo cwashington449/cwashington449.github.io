@@ -28,6 +28,7 @@ body, html {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
+    animation: sunSet 10s forwards;
 }
 
 #moon {
@@ -36,6 +37,7 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
+    animation: moonRise 10s forwards;
 }
 
 .star {
@@ -48,22 +50,46 @@ body, html {
     transition: opacity 1s;
 }
 
+@keyframes sunSet {
+    0% { top: 20%; opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes sunRise {
+    0% { top: 100%; opacity: 0; }
+    100% { top: 20%; opacity: 1; }
+}
+
+@keyframes moonRise {
+    0% { top: 100%; opacity: 0; }
+    100% { top: 20%; opacity: 1; }
+}
+
+@keyframes moonSet {
+    0% { top: 20%; opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
 #scene.night #sun {
-    top: 100%;
-    opacity: 0;
+    animation: sunSet 10s forwards;
 }
 
 #scene.night #moon {
-    top: 20%;
-    opacity: 1;
     display: block;
+    animation: moonRise 10s forwards;
+}
+
+#scene.day #sun {
+    animation: sunRise 10s forwards;
+}
+
+#scene.day #moon {
+    animation: moonSet 10s forwards;
 }
 
 #scene.night .star {
     opacity: 1;
 }
-
-
 
 
 h1 {

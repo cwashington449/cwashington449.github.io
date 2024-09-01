@@ -91,7 +91,8 @@ body, html {
 
 /* Animation for sun rising with delay */
 #scene.day #sun {
-    animation: sunRise 5s 5s forwards; /* Delay sun rise until moon has set */
+    animation: sunRise 5s forwards; /* Delay sun rise until moon has set */
+    display: block;
 }
 
 /* Animation for moon setting */
@@ -110,9 +111,6 @@ body, html {
     opacity: 0;
     transition-delay: 0s;
 }
-
-
-
 
 h1 {
   font-size: 3em;

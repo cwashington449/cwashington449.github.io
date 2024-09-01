@@ -1,34 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const scene = document.getElementById('scene');
     const sun = document.getElementById('sun');
     const moon = document.getElementById('moon');
+    const stars = document.getElementById('stars');
+    const sky = document.querySelector('.sky');
+    const overlay = document.querySelector('.overlay');
+    const body = document.body;
 
-    // Function to create stars
-    function createStars() {
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            star.style.top = `${Math.random() * 100}%`;
-            star.style.left = `${Math.random() * 100}%`;
-            scene.appendChild(star);
-        }
-    }
-
-    // Create stars on page load
-    createStars();
-
-    // Event listener for sun click to transition to night
     sun.addEventListener('click', () => {
-        scene.classList.remove('day');
-        scene.classList.add('night');
-        sun.style.opacity = 1; // Ensure sun is visible for animation
+        sun.style.top = '90%';
+        sun.style.opacity = '0';
+        moon.style.top = '10%';
+        moon.style.opacity = '1';
+        stars.style.opacity = '1';
+        sky.style.background = 'linear-gradient(to bottom, #000033, #000)';
+        overlay.style.backgroundColor = 'rgba(0, 0, 51, 0.7)';
+        body.style.backgroundColor = '#000';
+        body.style.color = '#fff';
     });
 
-    // Event listener for moon click to transition to day
     moon.addEventListener('click', () => {
-        scene.classList.remove('night');
-        scene.classList.add('day');
-        sun.style.opacity = 0; // Start with sun hidden
+        moon.style.top = '90%';
+        moon.style.opacity = '0';
+        sun.style.top = '10%';
+        sun.style.opacity = '1';
+        stars.style.opacity = '0';
+        sky.style.background = 'linear-gradient(to bottom, #87CEEB, #FFD700)';
+        overlay.style.backgroundColor = 'rgba(0, 68, 204, 0.7)';
+        body.style.backgroundColor = '#f4f4f4';
+        body.style.color = '#333';
     });
 });
-

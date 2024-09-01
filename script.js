@@ -4,7 +4,9 @@ const sky = document.querySelector('.sky');
 const starsContainer = document.querySelector('.stars');
 
 // Add a click event listener to the sun element
-sun.addEventListener('click', toggleMode);
+sun.addEventListener('click', () => {
+  console.log('Sun clicked!');
+});
 
 function toggleMode() {
   if (sun.style.display === 'none') {

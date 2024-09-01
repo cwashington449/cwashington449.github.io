@@ -1,3 +1,4 @@
+alert('JavaScript is running');
 document.addEventListener('DOMContentLoaded', () => {
     const sun = document.getElementById('sun');
     const moon = document.getElementById('moon');
@@ -7,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
     sun.addEventListener('click', () => {
+        console.log('Sun clicked'); // Debugging line
         sun.style.top = '90%';
         sun.style.opacity = '0';
         moon.style.top = '10%';
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     moon.addEventListener('click', () => {
+        console.log('Moon clicked'); // Debugging line
         moon.style.top = '90%';
         moon.style.opacity = '0';
         sun.style.top = '10%';

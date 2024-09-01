@@ -31,3 +31,4 @@ document.addEventListener('DOMContentLoaded', () => {
         sun.style.opacity = 0; // Start with sun hidden
     });
 });
+

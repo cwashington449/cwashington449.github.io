@@ -17,12 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     createStars();
 
     sun.addEventListener('click', () => {
+        scene.classList.remove('day');
         scene.classList.add('night');
         scene.style.background = 'linear-gradient(to bottom, #2C3E50, #000000)'; // Nighttime sky
     });
 
     moon.addEventListener('click', () => {
         scene.classList.remove('night');
+        scene.classList.add('day');
         scene.style.background = 'linear-gradient(to bottom, #87CEEB, #FFFFFF)'; // Daytime sky
     });
 });

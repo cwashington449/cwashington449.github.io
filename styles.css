@@ -1,0 +1,94 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    scroll-behavior: smooth;
+}
+
+#scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #87CEEB 50%, #228B22 50%);
+    transition: background 5s;
+}
+
+.sun, .moon {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    top: 10%;
+    right: 10%;
+    cursor: pointer;
+}
+
+.sun {
+    background: yellow;
+}
+
+.moon {
+    background: lightgray;
+    display: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.bush, .tree {
+    position: absolute;
+    bottom: 0;
+}
+
+.bush {
+    width: 100px;
+    height: 50px;
+    background: url('bush1.png') no-repeat center center;
+    background-size: contain;
+}
+
+.tree {
+    width: 50px;
+    height: 150px;
+    background: url('tree1.png') no-repeat center center;
+    background-size: contain;
+}
+
+nav {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    max-width: 600px;
+}

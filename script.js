@@ -1,42 +1,26 @@
+// script.js
 const sun = document.querySelector('.sun');
 const moon = document.querySelector('.moon');
 const scene = document.getElementById('scene');
-const stars = [];
 let isDay = true;
-
-// Function to place bushes and trees randomly on the ground
-function placeElementsRandomly() {
-    const bushes = document.querySelectorAll('.bush');
-    const trees = document.querySelectorAll('.tree');
-    bushes.forEach(bush => {
-        bush.style.left = `${Math.random() * 90}%`;
-    });
-    trees.forEach(tree => {
-        tree.style.left = `${Math.random() * 90}%`;
-    });
-}
-
-// Call the function to place elements randomly on page load
-placeElementsRandomly();
 
 sun.addEventListener('click', () => {
     if (isDay) {
         sun.style.transition = 'all 5s';
         moon.style.transition = 'all 5s';
-        scene.style.transition = 'background 5s';
+        scene.style.transition = 'background 10s';
 
-        sun.style.top = '80%';
-        sun.style.right = '10%';
+        sun.style.top = '110%';
         moon.style.display = 'block';
         moon.style.top = '10%';
-        moon.style.right = '10%';
 
-        scene.style.background = 'linear-gradient(to bottom, #000033 50%, #228B22 50%)';
+        scene.style.background = 'linear-gradient(to bottom, #FF4500, #000033)';
 
         setTimeout(() => {
             sun.style.display = 'none';
             moon.style.top = '10%';
-            moon.style.right = '10%';
+            moon.style.left = '50%';
+            moon.style.transform = 'translateX(-50%)';
             addStars();
         }, 5000);
 
@@ -48,12 +32,17 @@ moon.addEventListener('click', () => {
     if (!isDay) {
         sun.style.display = 'block';
         sun.style.top = '10%';
-        sun.style.right = '10%';
-        moon.style.display = 'none';
-        scene.style.background = 'linear-gradient(to bottom, #87CEEB 50%, #228B22 50%)';
-        stars.forEach(star => {
-            star.style.opacity = 0;
-        });
+        sun.style.left = '50%';
+        sun.style.transform = 'translateX(-50%)';
+        moon.style.transition = 'all 5s';
+        moon.style.top = '110%';
+
+        scene.style.background = 'linear-gradient(to bottom, #87CEEB, #228B22)';
+        removeStars();
+
+        setTimeout(() => {
+            moon.style.display = 'none';
+        }, 5000);
 
         isDay = true;
     }
@@ -63,12 +52,28 @@ function addStars() {
     for (let i = 0; i < 100; i++) {
         const star = document.createElement('div');
         star.classList.add('star');
-        star.style.top = `${Math.random() * 50}%`; // Ensure stars are in the sky
+        star.style.position = 'absolute';
+        star.style.width = '2px';
+        star.style.height = '2px';
+        star.style.background = 'white';
+        star.style.borderRadius = '50%';
+        star.style.top = `${Math.random() * 50}%`;
         star.style.left = `${Math.random() * 100}%`;
+        star.style.opacity = 0;
+        star.style.transition = 'opacity 2s';
         scene.appendChild(star);
-        stars.push(star);
+        setTimeout(() => {
+            star.style.opacity = 1;
+        }, 5000);
     }
+}
+
+function removeStars() {
+    const stars = document.querySelectorAll('.star');
     stars.forEach(star => {
-        star.style.opacity = 1;
+        star.style.opacity = 0;
+        setTimeout(() => {
+            star.remove();
+        }, 2000);
     });
 }

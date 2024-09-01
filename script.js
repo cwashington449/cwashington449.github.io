@@ -1,4 +1,3 @@
-// script.js
 const sun = document.querySelector('.sun');
 const moon = document.querySelector('.moon');
 const scene = document.getElementById('scene');
@@ -6,8 +5,8 @@ let isDay = true;
 
 sun.addEventListener('click', () => {
     if (isDay) {
-        sun.style.transition = 'all 5s';
-        moon.style.transition = 'all 5s';
+        sun.style.transition = 'all 10s';
+        moon.style.transition = 'all 10s';
         scene.style.transition = 'background 10s';
 
         sun.style.top = '110%';
@@ -22,7 +21,7 @@ sun.addEventListener('click', () => {
             moon.style.left = '50%';
             moon.style.transform = 'translateX(-50%)';
             addStars();
-        }, 5000);
+        }, 10000);
 
         isDay = false;
     }
@@ -34,7 +33,7 @@ moon.addEventListener('click', () => {
         sun.style.top = '10%';
         sun.style.left = '50%';
         sun.style.transform = 'translateX(-50%)';
-        moon.style.transition = 'all 5s';
+        moon.style.transition = 'all 10s';
         moon.style.top = '110%';
 
         scene.style.background = 'linear-gradient(to bottom, #87CEEB, #228B22)';
@@ -42,7 +41,7 @@ moon.addEventListener('click', () => {
 
         setTimeout(() => {
             moon.style.display = 'none';
-        }, 5000);
+        }, 10000);
 
         isDay = true;
     }
@@ -64,7 +63,7 @@ function addStars() {
         scene.appendChild(star);
         setTimeout(() => {
             star.style.opacity = 1;
-        }, 5000);
+        }, 10000);
     }
 }
 

@@ -10,7 +10,7 @@ body, html {
     width: 100%;
     height: 100%;
     background: linear-gradient(to bottom, #87CEEB, #FFFFFF); /* Daytime sky */
-    transition: background 1s;
+    transition: background 5s;
     overflow: hidden;
 }
 
@@ -20,20 +20,20 @@ body, html {
     height: 100px;
     border-radius: 50%;
     cursor: pointer;
-    transition: all 1s;
+    transition: all 5s;
 }
 
 #sun {
     background: yellow;
     top: 20%;
-    left: 70%; /* Positioned more to the right */
+    left: 80%; /* Positioned more naturally in the sky */
     transform: translate(-50%, -50%);
 }
 
 #moon {
     background: lightgray;
-    top: 80%;
-    left: 50%;
+    top: 100%; /* Start below the view */
+    left: 20%; /* Positioned more naturally in the sky */
     transform: translate(-50%, -50%);
     display: none;
 }
@@ -45,48 +45,49 @@ body, html {
     background: white;
     border-radius: 50%;
     opacity: 0;
-    transition: opacity 1s;
+    transition: opacity 5s;
 }
 
 @keyframes sunSet {
-    0% { top: 20%; left: 70%; opacity: 1; }
-    100% { top: 100%; left: 50%; opacity: 0; }
+    0% { top: 20%; left: 80%; opacity: 1; }
+    100% { top: 100%; left: 60%; opacity: 0; }
 }
 
 @keyframes sunRise {
-    0% { top: 100%; left: 50%; opacity: 0; }
-    100% { top: 20%; left: 70%; opacity: 1; }
+    0% { top: 100%; left: 60%; opacity: 0; }
+    100% { top: 20%; left: 80%; opacity: 1; }
 }
 
 @keyframes moonRise {
-    0% { top: 100%; opacity: 0; }
-    100% { top: 20%; opacity: 1; }
+    0% { top: 100%; left: 20%; opacity: 0; }
+    100% { top: 20%; left: 20%; opacity: 1; }
 }
 
 @keyframes moonSet {
-    0% { top: 20%; opacity: 1; }
-    100% { top: 100%; opacity: 0; }
+    0% { top: 20%; left: 20%; opacity: 1; }
+    100% { top: 100%; left: 20%; opacity: 0; }
 }
 
 #scene.night #sun {
-    animation: sunSet 10s forwards;
+    animation: sunSet 5s forwards;
 }
 
 #scene.night #moon {
     display: block;
-    animation: moonRise 10s forwards;
+    animation: moonRise 5s 5s forwards; /* Delay moon rise until sun has set */
 }
 
 #scene.day #sun {
-    animation: sunRise 10s forwards;
+    animation: sunRise 5s 5s forwards; /* Delay sun rise until moon has set */
 }
 
 #scene.day #moon {
-    animation: moonSet 10s forwards;
+    animation: moonSet 5s forwards;
 }
 
 #scene.night .star {
     opacity: 1;
+    transition-delay: 5s; /* Delay star appearance until sky is dark */
 }
 
 

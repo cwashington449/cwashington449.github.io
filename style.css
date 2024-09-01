@@ -5,8 +5,6 @@ body, html {
     overflow: hidden;
 }
 
-
-
 #scene {
     position: relative;
     width: 100%;
@@ -30,6 +28,7 @@ body, html {
     top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
+    animation: moveSun 10s linear infinite;
 }
 
 #moon {
@@ -38,6 +37,7 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
+    animation: moveMoon 10s linear infinite;
 }
 
 .star {
@@ -49,6 +49,19 @@ body, html {
     opacity: 0;
     transition: opacity 1s;
 }
+
+@keyframes moveSun {
+    0% { top: 20%; left: 0%; }
+    50% { top: 50%; left: 50%; }
+    100% { top: 20%; left: 100%; }
+}
+
+@keyframes moveMoon {
+    0% { top: 80%; left: 0%; }
+    50% { top: 50%; left: 50%; }
+    100% { top: 80%; left: 100%; }
+}
+
 
 
 h1 {

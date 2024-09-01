@@ -16,19 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createStars();
 
-    const stars = document.querySelectorAll('.star');
-
     sun.addEventListener('click', () => {
+        scene.classList.add('night');
         scene.style.background = 'linear-gradient(to bottom, #2C3E50, #000000)'; // Nighttime sky
-        sun.style.display = 'none';
-        moon.style.display = 'block';
-        stars.forEach(star => star.style.opacity = 1); // Show stars
     });
 
     moon.addEventListener('click', () => {
+        scene.classList.remove('night');
         scene.style.background = 'linear-gradient(to bottom, #87CEEB, #FFFFFF)'; // Daytime sky
-        moon.style.display = 'none';
-        sun.style.display = 'block';
-        stars.forEach(star => star.style.opacity = 0); // Hide stars
     });
 });

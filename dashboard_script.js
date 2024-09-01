@@ -1,4 +1,4 @@
-// Sample data (replace with your own)
+// Sample data
 const data = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
@@ -26,7 +26,7 @@ const data = {
   ]
 };
 
-// Create multiple charts
+// Line charts
 const ctx1 = document.getElementById('chart1');
 new Chart(ctx1, {
   type: 'line',
@@ -46,6 +46,7 @@ new Chart(ctx1, {
   }
 });
 
+//Bar chart
 const ctx2 = document.getElementById('chart2');
 new Chart(ctx2, {
   type: 'bar',
@@ -65,6 +66,7 @@ new Chart(ctx2, {
   }
 });
 
+//Pie chart
 const ctx3 = document.getElementById('chart3');
 new Chart(ctx3, {
   type: 'pie',

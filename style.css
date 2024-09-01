@@ -32,6 +32,8 @@ body, html {
     top: 20%;
     left: 80%; /* Positioned more naturally in the sky */
     transform: translate(-50%, -50%);
+    display: block;
+    opacity: 1;
 }
 
 /* Moon styles */
@@ -93,8 +95,8 @@ body, html {
 
 /* Animation for sun rising with delay */
 #scene.day #sun {
-    animation: sunRise 5s 5s forwards; /* Delay sun rise until moon has set */
-    display: block;
+    animation: sunRise 5s forwards; /* Delay sun rise until moon has set */
+    opacity: 0; /* Start with sun hidden */
 }
 
 /* Animation for moon setting */
@@ -123,6 +125,7 @@ body, html {
 #scene.day {
     background: linear-gradient(to bottom, #000000, #2C3E50, #87CEEB); /* Night to sunrise sky */
 }
+
 
 
 

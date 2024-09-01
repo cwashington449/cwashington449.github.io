@@ -21,11 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     sun.addEventListener('click', () => {
         scene.classList.remove('day');
         scene.classList.add('night');
+        sun.style.opacity = 1; // Ensure sun is visible for animation
     });
 
     // Event listener for moon click to transition to day
     moon.addEventListener('click', () => {
         scene.classList.remove('night');
         scene.classList.add('day');
+        sun.style.opacity = 0; // Start with sun hidden
     });
 });

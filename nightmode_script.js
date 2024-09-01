@@ -1,5 +1,3 @@
-alert('JavaScript is running'); // Debugging line
-
 document.addEventListener('DOMContentLoaded', () => {
     const sun = document.getElementById('sun');
     const moon = document.getElementById('moon');
@@ -7,13 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const sky = document.querySelector('.sky');
     const overlay = document.querySelector('.overlay');
     const body = document.body;
-
-    // Debugging: Check if elements are correctly selected
-    console.log('Sun:', sun);
-    console.log('Moon:', moon);
-    console.log('Stars:', stars);
-    console.log('Sky:', sky);
-    console.log('Overlay:', overlay);
 
     sun.addEventListener('click', () => {
         console.log('Sun clicked'); // Debugging line

@@ -87,7 +87,9 @@ nav ul li a {
     border-radius: 50%;
     cursor: pointer;
     transition: all 5s;
+    z-index: 3; /* Ensure sun and moon are on top */
 }
+
 
 .sun {
     background: #FFD700;

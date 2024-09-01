@@ -10,8 +10,10 @@ sun.addEventListener('click', () => {
         scene.style.transition = 'background 10s';
 
         sun.style.top = '110%';
+        sun.style.left = '10%';
         moon.style.display = 'block';
         moon.style.top = '10%';
+        moon.style.left = '90%';
 
         scene.style.background = 'linear-gradient(to bottom, #FF4500, #000033)';
 
@@ -31,10 +33,11 @@ moon.addEventListener('click', () => {
     if (!isDay) {
         sun.style.display = 'block';
         sun.style.top = '10%';
-        sun.style.left = '50%';
+        sun.style.left = '90%';
         sun.style.transform = 'translateX(-50%)';
         moon.style.transition = 'all 10s';
         moon.style.top = '110%';
+        moon.style.left = '10%';
 
         scene.style.background = 'linear-gradient(to bottom, #87CEEB, #228B22)';
         removeStars();
@@ -63,7 +66,7 @@ function addStars() {
         scene.appendChild(star);
         setTimeout(() => {
             star.style.opacity = 1;
-        }, 10000);
+        }, 5000);
     }
 }
 

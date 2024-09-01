@@ -90,6 +90,12 @@ body, html {
     transition-delay: 5s; /* Delay star appearance until sky is dark */
 }
 
+#scene.day .star {
+    opacity: 0;
+    transition-delay: 0s; /* Hide stars immediately when transitioning to day */
+}
+
+
 
 h1 {
   font-size: 3em;

@@ -1,23 +1,86 @@
-/* Basic reset for body and html */
-body, html {
+* {
     margin: 0;
     padding: 0;
-    height: 100%;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    transition: background-color 2s, color 2s;
+}
+
+header {
+    background-color: #0044cc;
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.landing {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     overflow: hidden;
 }
 
-/* Container for the scene */
-#scene {
-    position: relative;
+.overlay {
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(0, 68, 204, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: background-color 2s;
+}
+
+.overlay h1, .overlay p {
+    color: #fff;
+    transition: color 2s;
+}
+
+.btn {
+    background-color: #fff;
+    color: #0044cc;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 2s, color 2s;
+}
+
+.btn:hover {
+    background-color: #0044cc;
+    color: #fff;
+}
+
+.sky {
+    position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, #87CEEB, #FFFFFF); /* Daytime sky */
+    background: linear-gradient(to bottom, #87CEEB, #FFD700);
     transition: background 5s;
-    overflow: hidden;
+    z-index: 1;
 }
 
-/* Common styles for celestial bodies */
-.celestial {
+.sun, .moon {
     position: absolute;
     width: 100px;
     height: 100px;
@@ -26,125 +89,38 @@ body, html {
     transition: all 5s;
 }
 
-/* Sun styles */
-#sun {
-    background: yellow;
-    top: 20%;
-    left: 80%; /* Positioned more naturally in the sky */
-    transform: translate(-50%, -50%);
-    display: block;
-    opacity: 1;
+.sun {
+    background: #FFD700;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-/* Moon styles */
-#moon {
-    background: lightgray;
-    top: 100%; /* Start below the view */
-    left: 20%; /* Positioned more naturally in the sky */
-    transform: translate(-50%, -50%);
-    display: none;
-    z-index: 1; /* Ensure moon is above stars */
+.moon {
+    background: #FFF;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
 }
 
-/* Star styles */
-.star {
+.stars {
     position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 2px 2px;
     opacity: 0;
     transition: opacity 5s;
-    z-index: 0; /* Ensure stars are behind moon */
 }
 
-/* Keyframes for sun setting */
-@keyframes sunSet {
-    0% { top: 20%; left: 80%; opacity: 1; }
-    100% { top: 100%; left: 60%; opacity: 0; }
-}
-
-/* Keyframes for sun rising */
-@keyframes sunRise {
-    0% { top: 100%; left: 60%; opacity: 0; }
-    100% { top: 20%; left: 80%; opacity: 1; }
-}
-
-/* Keyframes for moon rising */
-@keyframes moonRise {
-    0% { top: 100%; left: 20%; opacity: 0; }
-    100% { top: 20%; left: 20%; opacity: 1; }
-}
-
-/* Keyframes for moon setting */
-@keyframes moonSet {
-    0% { top: 20%; left: 20%; opacity: 1; }
-    100% { top: 100%; left: 20%; opacity: 0; }
-}
-
-/* Animation for sun setting */
-#scene.night #sun {
-    animation: sunSet 5s forwards;
-}
-
-/* Animation for moon rising with delay */
-#scene.night #moon {
-    display: block;
-    animation: moonRise 5s 5s forwards; /* Delay moon rise until sun has set */
-}
-
-/* Animation for sun rising with delay */
-#scene.day #sun {
-    animation: sunRise 5s forwards; /* Delay sun rise until moon has set */
-    opacity: 0; /* Start with sun hidden */
-}
-
-/* Animation for moon setting */
-#scene.day #moon {
-    animation: moonSet 5s forwards;
-}
-
-/* Stars appear gradually */
-#scene.night .star {
-    opacity: 1;
-    transition-delay: 5s; /* Delay star appearance until sky is dark */
-}
-
-/* Stars disappear immediately when transitioning to day */
-#scene.day .star {
-    opacity: 0;
-    transition-delay: 0s;
-}
-
-/* Gradual sky transition for sunset */
-#scene.night {
-    background: linear-gradient(to bottom, #FF4500, #2C3E50, #000000); /* Sunset to night sky */
-}
-
-/* Gradual sky transition for sunrise */
-#scene.day {
-    background: linear-gradient(to bottom, #000000, #2C3E50, #87CEEB); /* Night to sunrise sky */
-}
-
-
-
-
-
-h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
-}
-
-.project-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.project-link {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
+footer {
+    background-color: #0044cc;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

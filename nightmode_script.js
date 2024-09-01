@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.classList.remove('day');
         scene.classList.add('night');
         scene.style.background = 'linear-gradient(to bottom, #2C3E50, #000000)'; // Nighttime sky
+        sun.style.display = 'block'; // Ensure sun is visible for animation
     });
 
     // Event listener for moon click to transition to day
@@ -29,5 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scene.classList.remove('night');
         scene.classList.add('day');
         scene.style.background = 'linear-gradient(to bottom, #87CEEB, #FFFFFF)'; // Daytime sky
+        moon.style.display = 'block'; // Ensure moon is visible for animation
     });
 });

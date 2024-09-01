@@ -1,3 +1,4 @@
+/* Basic reset for body and html */
 body, html {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@ body, html {
     overflow: hidden;
 }
 
+/* Container for the scene */
 #scene {
     position: relative;
     width: 100%;
@@ -14,6 +16,7 @@ body, html {
     overflow: hidden;
 }
 
+/* Common styles for celestial bodies */
 .celestial {
     position: absolute;
     width: 100px;
@@ -23,6 +26,7 @@ body, html {
     transition: all 5s;
 }
 
+/* Sun styles */
 #sun {
     background: yellow;
     top: 20%;
@@ -30,6 +34,7 @@ body, html {
     transform: translate(-50%, -50%);
 }
 
+/* Moon styles */
 #moon {
     background: lightgray;
     top: 100%; /* Start below the view */
@@ -38,6 +43,7 @@ body, html {
     display: none;
 }
 
+/* Star styles */
 .star {
     position: absolute;
     width: 2px;
@@ -48,52 +54,63 @@ body, html {
     transition: opacity 5s;
 }
 
+/* Keyframes for sun setting */
 @keyframes sunSet {
     0% { top: 20%; left: 80%; opacity: 1; }
     100% { top: 100%; left: 60%; opacity: 0; }
 }
 
+/* Keyframes for sun rising */
 @keyframes sunRise {
     0% { top: 100%; left: 60%; opacity: 0; }
     100% { top: 20%; left: 80%; opacity: 1; }
 }
 
+/* Keyframes for moon rising */
 @keyframes moonRise {
     0% { top: 100%; left: 20%; opacity: 0; }
     100% { top: 20%; left: 20%; opacity: 1; }
 }
 
+/* Keyframes for moon setting */
 @keyframes moonSet {
     0% { top: 20%; left: 20%; opacity: 1; }
     100% { top: 100%; left: 20%; opacity: 0; }
 }
 
+/* Animation for sun setting */
 #scene.night #sun {
     animation: sunSet 5s forwards;
 }
 
+/* Animation for moon rising with delay */
 #scene.night #moon {
     display: block;
     animation: moonRise 5s 5s forwards; /* Delay moon rise until sun has set */
 }
 
+/* Animation for sun rising with delay */
 #scene.day #sun {
     animation: sunRise 5s 5s forwards; /* Delay sun rise until moon has set */
 }
 
+/* Animation for moon setting */
 #scene.day #moon {
     animation: moonSet 5s forwards;
 }
 
+/* Stars appear gradually */
 #scene.night .star {
     opacity: 1;
     transition-delay: 5s; /* Delay star appearance until sky is dark */
 }
 
+/* Stars disappear immediately when transitioning to day */
 #scene.day .star {
     opacity: 0;
-    transition-delay: 0s; /* Hide stars immediately when transitioning to day */
+    transition-delay: 0s;
 }
+
 
 
 

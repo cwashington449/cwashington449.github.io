@@ -26,9 +26,8 @@ body, html {
 #sun {
     background: yellow;
     top: 20%;
-    left: 50%;
+    left: 70%; /* Positioned more to the right */
     transform: translate(-50%, -50%);
-    animation: sunSet 10s forwards;
 }
 
 #moon {
@@ -37,7 +36,6 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none;
-    animation: moonRise 10s forwards;
 }
 
 .star {
@@ -51,13 +49,13 @@ body, html {
 }
 
 @keyframes sunSet {
-    0% { top: 20%; opacity: 1; }
-    100% { top: 100%; opacity: 0; }
+    0% { top: 20%; left: 70%; opacity: 1; }
+    100% { top: 100%; left: 50%; opacity: 0; }
 }
 
 @keyframes sunRise {
-    0% { top: 100%; opacity: 0; }
-    100% { top: 20%; opacity: 1; }
+    0% { top: 100%; left: 50%; opacity: 0; }
+    100% { top: 20%; left: 70%; opacity: 1; }
 }
 
 @keyframes moonRise {

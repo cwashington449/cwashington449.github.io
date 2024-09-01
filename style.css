@@ -90,7 +90,6 @@ nav ul li a {
     z-index: 3; /* Ensure sun and moon are on top */
 }
 
-
 .sun {
     background: #FFD700;
     top: 10%;

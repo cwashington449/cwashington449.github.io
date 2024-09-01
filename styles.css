@@ -21,20 +21,21 @@ body, html {
     height: 100px;
     border-radius: 50%;
     cursor: pointer;
+    transition: transform 10s;
 }
 
 .sun {
     background: yellow;
     top: 10%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 0);
 }
 
 .moon {
     background: lightgray;
     top: 110%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 0);
     display: none;
 }
 

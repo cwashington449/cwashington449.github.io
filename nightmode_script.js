@@ -14,14 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Create stars on page load
     createStars();
 
+    // Event listener for sun click to transition to night
     sun.addEventListener('click', () => {
         scene.classList.remove('day');
         scene.classList.add('night');
         scene.style.background = 'linear-gradient(to bottom, #2C3E50, #000000)'; // Nighttime sky
     });
 
+    // Event listener for moon click to transition to day
     moon.addEventListener('click', () => {
         scene.classList.remove('night');
         scene.classList.add('day');

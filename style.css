@@ -41,6 +41,7 @@ body, html {
     left: 20%; /* Positioned more naturally in the sky */
     transform: translate(-50%, -50%);
     display: none;
+    z-index: 1; /* Ensure moon is above stars */
 }
 
 /* Star styles */
@@ -52,6 +53,7 @@ body, html {
     border-radius: 50%;
     opacity: 0;
     transition: opacity 5s;
+    z-index: 0; /* Ensure stars are behind moon */
 }
 
 /* Keyframes for sun setting */
@@ -91,7 +93,7 @@ body, html {
 
 /* Animation for sun rising with delay */
 #scene.day #sun {
-    animation: sunRise 5s forwards; /* Delay sun rise until moon has set */
+    animation: sunRise 5s 5s forwards; /* Delay sun rise until moon has set */
     display: block;
 }
 
@@ -111,6 +113,17 @@ body, html {
     opacity: 0;
     transition-delay: 0s;
 }
+
+/* Gradual sky transition for sunset */
+#scene.night {
+    background: linear-gradient(to bottom, #FF4500, #2C3E50, #000000); /* Sunset to night sky */
+}
+
+/* Gradual sky transition for sunrise */
+#scene.day {
+    background: linear-gradient(to bottom, #000000, #2C3E50, #87CEEB); /* Night to sunrise sky */
+}
+
 
 h1 {
   font-size: 3em;

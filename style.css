@@ -61,15 +61,14 @@ footer {
   border-radius: 34px; /* Rounded corners */
   cursor: pointer; /* Change cursor on hover */
   padding: 2px; /* Add padding for better visibility */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-image: linear-gradient(to right, #ccc, #eee);
 }
 
 .theme-toggle input:checked + .theme-toggle-slider {
-  background-color: #666;
+  background-image: linear-gradient(to right, #333, #555);
 }
 
-.theme-toggle input:checked + .theme-toggle-slider {
-  background-color: #666;
-}
 
 /* Dark mode styles */
 .dark-mode {

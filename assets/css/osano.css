@@ -14,7 +14,7 @@
 .drawer-link{
   position: static;
   display: block;
-  font-size: 0.7em;
-  margin: auto;
-  width: 50%;
+  font-size: 0.63em;
+  margin: fixed;
+  width: 70%;
 }

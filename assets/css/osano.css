@@ -10,3 +10,11 @@
 .osano-cm-widget{
   display: none;
 }
+
+.drawer-link{
+  position: static;
+  display: block;
+  font-size: 0.7em;
+  margin: auto;
+  width: 70%;
+}

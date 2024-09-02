@@ -37,6 +37,8 @@ footer {
   padding: 10px;
   background-color: #f0f0f0;
 }
+
+/* Theme toggle styles */
 .theme-toggle {
   position: relative;
   display: inline-block;
@@ -60,4 +62,14 @@ footer {
 
 .theme-toggle input:checked + .theme-toggle-slider {
   background-color: #666;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #111;
+  color: #fff;
+}
+
+.dark-mode header {
+  background-color: #222;
 }

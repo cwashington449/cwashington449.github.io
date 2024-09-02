@@ -1,3 +1,6 @@
-.osano.cm.button--type_manage{
-  background-color: #e27689;
+.osano-cm-button--type_manage{
+  background-color: #BE8E90;
+}
+.osano-cm-button--type_manage:hover{
+  filter: saturate(0.5);
 }

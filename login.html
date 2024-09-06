@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="login_style.css">
-    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js"></script>
 </head>
 <body>
     <div class="login-container">
@@ -17,23 +15,26 @@
         </form>
         <div id="error-message"></div>
     </div>
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js';
+        import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js';
 
-    <script>
         // Your web app's Firebase configuration
-       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyD2x8YdENHZUmcjqOBPjghdjOI-jwt02d8",
-  authDomain: "cw-portfolio-1f820.firebaseapp.com",
-  projectId: "cw-portfolio-1f820",
-  storageBucket: "cw-portfolio-1f820.appspot.com",
-  messagingSenderId: "401349391323",
-  appId: "1:401349391323:web:7408f3851bacf6b6712dfe",
-  measurementId: "G-X3L6TBXPWR"
-};
+        const firebaseConfig = {
+            apiKey: "AIzaSyD2x8YdENHZUmcjqOBPjghdjOI-jwt02d8",
+            authDomain: "cw-portfolio-1f820.firebaseapp.com",
+            projectId: "cw-portfolio-1f820",
+            storageBucket: "cw-portfolio-1f820.appspot.com",
+            messagingSenderId: "401349391323",
+            appId: "1:401349391323:web:7408f3851bacf6b6712dfe",
+            measurementId: "G-X3L6TBXPWR"
+        };
 
         // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
+        const app = initializeApp(firebaseConfig);
+
+        // Get the auth instance
+        const auth = getAuth(app);
 
         // Login form event listener
         document.getElementById('loginForm').addEventListener('submit', (event) => {
@@ -42,9 +43,9 @@ const firebaseConfig = {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            auth.signInWithEmailAndPassword(email, password)
+            signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Signed in 
+                    // Signed in
                     const user = userCredential.user;
                     console.log("User signed in:", user);
                     // Redirect to your desired page after successful login

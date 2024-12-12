@@ -36,10 +36,15 @@
   gtag('js', new Date());
 
   gtag('config', 'G-RFKYS17G1M');
+</script>
+	
 
-		document.querySelector('centerdrawer').addEventListener('click', function(event) {
-    event.preventDefault();
-    Osano.cm.showDrawer('osano-cm-dom-info-dialog-open');
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('centerdrawer').addEventListener('click', function(event) {
+        event.preventDefault();
+        Osano.cm.showDrawer('osano-cm-dom-info-dialog-open');
+    });
 });
 </script>
 	</head>

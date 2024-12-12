@@ -6,4 +6,5 @@
     width: 80%; /* Adjust the width as needed */
     max-width: 600px; /* Adjust the max-width as needed */
     z-index: 1000; /* Ensure it's above other elements */
+    transition: none; /* Disable any transition effects */
 }

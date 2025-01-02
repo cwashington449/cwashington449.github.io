@@ -14,7 +14,7 @@ function displayOsanoUUID() {
 
     if (drawer) {
         // Find a suitable place to insert the UUID (e.g., after the title)
-        let titleElement = drawer.querySelector('.osano-cm-dialog__title');
+        let titleElement = drawer.querySelector('.osano-cm-dialog-header');
 
         if (titleElement) {
             // Check if we've already added the UUID element

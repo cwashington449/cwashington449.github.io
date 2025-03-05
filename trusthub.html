@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataWise Solutions Trust Hub</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        .cookie-settings {
+            display: none; /* Initially hide cookie settings */
+        }
+        .dsar-status {
+            border: 1px solid lightgray;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="section">
+        <h1>Our Commitment to Your Privacy</h1>
+        <p><strong>Your Trust, Our Priority: DataWise Solutions and Your Privacy</strong></p>
+        <p>At DataWise Solutions, we believe that your privacy is fundamental. We are committed to a 'Visible Privacy' approach, meaning we strive to be transparent, accountable, and empower you with control over your personal information. We believe that strong privacy practices build trust and foster a secure and positive user experience.</p>
+        <p>We understand that your data is valuable. We use it responsibly to improve our services, personalize your experience, and ensure your security. We are dedicated to protecting your data and using it only in ways you understand and agree to.</p>
+        <p><em>[Interactive Graphic Placeholder]</em></p>
+        <button onclick="showCookieSettings()">Explore Your Privacy Choices</button>
+    </section>
+
+    <section class="section">
+        <h2>Cookie Consent Management</h2>
+        <p><strong>Current Cookie Consent Status:</strong></p>
+        <p id="cookieStatus">Current Settings: Analytics Cookies: Allowed, Marketing Cookies: Denied, Essential Cookies: Always Enabled. Last Updated: 2024-10-27 10:00 AM UTC</p>
+        <button onclick="toggleCookieSettings()">Modify Cookie Preferences</button>
+        <div class="cookie-settings" id="cookieSettings">
+            <p><strong>Cookie Settings:</strong></p>
+            <p>Essential Cookies: Always Enabled (These cookies are necessary for the website to function.)</p>
+            <label><input type="checkbox" id="analyticsCookie" checked> Analytics Cookies (These cookies help us understand how you use our website.)</label><br>
+            <label><input type="checkbox" id="marketingCookie"> Marketing Cookies (These cookies are used to personalize ads and track marketing campaigns.)</label><br>
+            <button onclick="saveCookiePreferences()">Save Preferences</button>
+        </div>
+        <p><strong>Detailed Cookie Disclosure:</strong></p>
+        <p><strong>Essential Cookies:</strong> SessionID, CookieConsent</p>
+        <p><strong>Analytics Cookies:</strong> Google Analytics (_ga), Matomo (_pk_id)</p>
+        <p><strong>Marketing Cookies:</strong> Facebook Pixel (fbp)</p>
+        <p><strong>Consent Audit Log:</strong></p>
+        <p>2024-10-27 10:00 AM UTC: Marketing Cookies Denied.</p>
+        <p>2024-10-27 09:15 AM UTC: Marketing Cookies Allowed.</p>
+        <p>2024-10-26 03:00 PM UTC: Initial Consent Provided.</p>
+    </section>
+
+    <section class="section">
+        <h2>Data Subject Rights (DSAR) Management</h2>
+        <p><strong>Your Data Rights:</strong> You have the right to access, correct, delete, or restrict the use of your personal data. You can also object to processing and request data portability. To exercise these rights, please use the DSAR Request Portal below.</p>
+        <form id="dsarForm">
+            <label>Full Name: <input type="text" name="fullName"></label><br>
+            <label>Email Address: <input type="email" name="email"></label><br>
+            <label>Type of Request: 
+                <select name="requestType">
+                    <option value="access">Access</option>
+                    <option value="correction">Correction</option>
+                    <option value="deletion">Deletion</option>
+                    <option value="restriction">Restriction</option>
+                    <option value="portability">Portability</option>
+                    <option value="objection">Objection</option>
+                </select>
+            </label><br>
+            <label>Details of Request: <textarea name="details"></textarea></label><br>
+            <button type="button" onclick="submitDSAR()">Submit Request</button>
+        </form>
+        <div id="dsarStatus" class="dsar-status"></div>
+        <p><strong>Data Usage and Processing Information:</strong></p>
+        <p>Categories of Personal Data Collected: Name, email address, IP address, browsing activity, purchase history.</p>
+        <p>Purposes of Data Usage: Account management, service delivery, personalization, marketing, analytics.</p>
+        <p>Data Retention: We retain your data for as long as necessary to provide our services and comply with legal obligations.</p>
+        <p>Third-Party Sharing: We share data with our trusted service providers for analytics, marketing, and payment processing. We only provide the data they require to perform their specific services.</p>
+    </section>
+
+    <section class="section">
+        <h2>Privacy Policy and Related Documents</h2>
+        <p><a href="#">Privacy Policy</a></p>
+        <p><a href="#">Terms of Service</a></p>
+        <p><a href="#">Data Processing Agreement</a></p>
+        <p><a href="#">Security Policy</a></p>
+        <p>Privacy Policy Version History: Version 1.2: 2024-10-20, Version 1.1: 2024-08-15, Version 1.0: 2024-06-01</p>
+    </section>
+
+    <section class="section">
+        <h2>Security and Data Protection</h2>
+        <p>Data Encryption, Access Controls, Regular Security Audits, ISO 27001 Certified.</p>
+        <p>No data breaches reported.</p>
+        <p>Contact: [email address removed]</p>
+    </section>
+
+    <section class="section">
+        <h2>Transparency and Accountability</h2>
+        <p>Data Protection Officer: [email address removed]</p>
+        <form id="privacyInquiry">
+            <label>Your Message: <textarea></textarea></label><br>
+            <button type="button">Send Inquiry</button>
+        </form>
+        <p><a href="#">Quarterly Privacy Report Q3 2024</a></p>
+        <p>ISO 27001 Badge, TRUSTe Badge</p>
+    </section>
+
+    <script>
+        function showCookieSettings() {
+            document.getElementById('cookieSettings').style.display = 'block';
+        }
+
+        function toggleCookieSettings() {
+            const settings = document.getElementById('cookieSettings');
+            settings.style.display = settings.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function saveCookiePreferences() {
+            const analytics = document.getElementById('analyticsCookie').checked;
+            const marketing = document.getElementById('marketingCookie').checked;
+            document.getElementById('cookieStatus').textContent = `Current Settings: Analytics Cookies: ${analytics ? 'Allowed' : 'Denied'}, Marketing Cookies: ${marketing ? 'Allowed' : 'Denied'}, Essential Cookies: Always Enabled. Last Updated: ${new Date().toLocaleString()}`;
+            document.getElementById('cookieSettings').style.display = 'none';
+
+        }
+
+        function submitDSAR() {
+            const form = document.getElementById('dsarForm');
+            const statusDiv = document.getElementById('dsarStatus');
+            const formData = new FormData(form);
+            const requestID = 'DSAR-' + new Date().toISOString().replace(/[^0-9]/g, '');
+
+            statusDiv.innerHTML = `<p>Request ID: ${requestID}</p><p>Status: Received</p><p>Estimated Response Time: 30 days</p>`;
+        }
+    </script>
+
+</body>
+</html>

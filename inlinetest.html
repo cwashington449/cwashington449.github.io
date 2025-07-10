@@ -12,31 +12,38 @@
       w[o][d] = w[o][d] || [];
     })(window, 'Osano', 'data');
 
-    // CORRECTED LOGIC
-    // This function will run after the main Osano script has fully initialized.
-    window.Osano('onInitialized', () => {
-      console.log('Osano.js initialized');
+    // ===================================================================
+    // NEW LOGIC
+    // ===================================================================
 
-      // Use the correct function to get the current consent status.
+    // 1. Define the activation logic in a reusable function.
+    // This function checks for consent and activates the script.
+    function activateMarketingScripts() {
       const currentConsent = window.Osano.cm.getConsent();
 
-      // First, check if the consent object exists, then check the MARKETING property.
-      // This will activate the marketing script only if consent has been given.
       if (currentConsent && currentConsent.MARKETING === 'ACCEPT') {
-        document.querySelectorAll('script[data-osano="MARKETING"]').forEach(script => {
-          if (script.type === 'text/plain') {
-            script.type = 'text/javascript';
-          }
+        // Find any marketing scripts that are still inactive ("text/plain").
+        document.querySelectorAll('script[data-osano="MARKETING"][type="text/plain"]').forEach(script => {
+          script.type = 'text/javascript';
+          console.log('Marketing script activated.'); // Added for easier debugging
         });
       }
-    });
+    }
 
-    // This listener remains for debugging purposes.
+    // 2. Run the check when Osano is initialized.
+    // This handles returning visitors who already have consent.
+    window.Osano('onInitialized', activateMarketingScripts);
+
+    // 3. Run the check AGAIN every time consent is changed.
+    // This handles new visitors clicking "Accept" on the banner.
+    window.Osano('onConsentChanged', activateMarketingScripts);
+
+    // ===================================================================
+
     window.Osano('onCookieBlocked', cookie =>
       console.debug('Osano.js blocked cookie:', cookie)
     );
 
-    // This remains for your specific Osano configuration.
     window.Osano('userData', 'example user data');
   </script>
   

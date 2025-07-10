@@ -12,33 +12,30 @@
       w[o][d] = w[o][d] || [];
     })(window, 'Osano', 'data');
 
-    // ===================================================================
-    // NEW LOGIC
-    // ===================================================================
-
-    // 1. Define the activation logic in a reusable function.
-    // This function checks for consent and activates the script.
+    // Define the activation logic in a reusable function.
     function activateMarketingScripts() {
       const currentConsent = window.Osano.cm.getConsent();
 
+      // ===================================================================
+      // DEBUGGING LINE
+      // This will log the entire consent object from Osano to the console.
+      console.log('Osano consent object:', currentConsent);
+      // ===================================================================
+
+      // The 'if' condition remains the same for now.
       if (currentConsent && currentConsent.MARKETING === 'ACCEPT') {
-        // Find any marketing scripts that are still inactive ("text/plain").
         document.querySelectorAll('script[data-osano="MARKETING"][type="text/plain"]').forEach(script => {
           script.type = 'text/javascript';
-          console.log('Marketing script activated.'); // Added for easier debugging
+          console.log('Marketing script activated.');
         });
       }
     }
 
-    // 2. Run the check when Osano is initialized.
-    // This handles returning visitors who already have consent.
+    // Run the check when Osano is initialized.
     window.Osano('onInitialized', activateMarketingScripts);
 
-    // 3. Run the check AGAIN every time consent is changed.
-    // This handles new visitors clicking "Accept" on the banner.
+    // Run the check AGAIN every time consent is changed.
     window.Osano('onConsentChanged', activateMarketingScripts);
-
-    // ===================================================================
 
     window.Osano('onCookieBlocked', cookie =>
       console.debug('Osano.js blocked cookie:', cookie)

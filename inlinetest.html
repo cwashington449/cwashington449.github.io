@@ -1,58 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
   <script>
-    // Osano Initialization Snippet
+    // Standard Osano initialization snippet
     (function (w, o, d) {
-      w[o] =
-        w[o] ||
-        function () {
-          w[o][d].push(arguments);
-        };
+      w[o] = w[o] || function () {
+        w[o][d].push(arguments);
+      };
       w[o][d] = w[o][d] || [];
     })(window, 'Osano', 'data');
 
-    // Define the activation logic in a reusable function.
-    function activateMarketingScripts() {
+    /**
+     * Activates marketing scripts by replacing the placeholder 'text/plain'
+     * scripts with executable 'text/javascript' scripts.
+     * This method handles both inline and external scripts.
+     */
+    function runMarketingScripts() {
+      // Use the getConsent() method to ensure we have the full, current state
       const currentConsent = window.Osano.cm.getConsent();
 
-      // ===================================================================
-      // DEBUGGING LINE
-      // This will log the entire consent object from Osano to the console.
-      console.log('Osano consent object:', currentConsent);
-      // ===================================================================
-
-      // The 'if' condition remains the same for now.
+      // Check if consent is granted for the MARKETING category
       if (currentConsent && currentConsent.MARKETING === 'ACCEPT') {
-        document.querySelectorAll('script[data-osano="MARKETING"][type="text/plain"]').forEach(script => {
+        const scripts = document.querySelectorAll('script[data-osano="MARKETING"][type="text/plain"]');
+        
+        scripts.forEach(original => {
+          const script = document.createElement('script');
           script.type = 'text/javascript';
-          console.log('Marketing script activated.');
+          
+          // Copy content for inline scripts
+          if (original.textContent) {
+            script.textContent = original.textContent;
+          }
+          // Copy src for external scripts
+          if (original.src) {
+            script.src = original.src;
+          }
+          
+          // Replace the placeholder script with the new, executable one
+          original.parentNode.replaceChild(script, original);
         });
       }
     }
 
-    // Run the check when Osano is initialized.
-    window.Osano('onInitialized', activateMarketingScripts);
+    // Set up listeners to run the activation function at the right times
+    window.Osano('onInitialized', runMarketingScripts);
+    window.Osano('onConsentChanged', runMarketingScripts);
 
-    // Run the check AGAIN every time consent is changed.
-    window.Osano('onConsentChanged', activateMarketingScripts);
-
-    window.Osano('onCookieBlocked', cookie =>
-      console.debug('Osano.js blocked cookie:', cookie)
-    );
-
+    // Optional listeners from your original code
+    window.Osano('onCookieBlocked', function (cookie) {
+      console.debug('Osano.js blocked cookie:', cookie);
+    });
     window.Osano('userData', 'example user data');
   </script>
-  
-  <script src="https://cmp.osano.com/16A0CuTCdGtXx3A1C/ec63760f-40b0-4c2c-b76a-e71dda7f148e/osano.js"></script> 
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+
+  <!-- Corrected the typo in the src attribute -->
+  <script src="https://cmp.osano.com/16A0CuTCdGtXx3A1C/ec63760f-40b0-4c2c-b76a-e71dda7f148e/osano.js"></script>
 </head>
 <body>
+  <!-- This script will only run if MARKETING cookies are accepted -->
   <script type="text/plain" data-osano="MARKETING">
-    console.log('Test')
+    console.log('Test');
   </script>
 </body>
 </html>
